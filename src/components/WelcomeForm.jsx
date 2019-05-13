@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {addWelcome} from '../actions/welcomeActions';
+import axios from 'axios';
+import {getWelcomeAsync} from '../actions/welcomeActions';
 
 class WelcomeForm extends Component{
     constructor(props) {
@@ -12,7 +13,21 @@ class WelcomeForm extends Component{
 
     onWelcomeFormSubmit = (e) => {
         e.preventDefault();
-        this.props.dispatch(addWelcome(this.state.author, this.state.content));
+        axios({
+            method: 'post',
+            url: 'https://posts-api-test.herokuapp.com/v1/posts',
+            data: {
+              author: this.state.author,
+              content:this.state.content
+            }
+          })
+          .then((response) => {
+            this.props.dispatch(getWelcomeAsync())
+          })
+          
+          .catch(function (error) {
+            console.log(error);
+          })
     }
 
     onAuthorChange = (e) => {

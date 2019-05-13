@@ -12,8 +12,10 @@ const welcome = (state=defaultState, action) => {
             return state.concat({author: action.payload.author, content: action.payload.content});
         case GET_WELCOME_SUCCESS:
             return action.payload.welcomeList;
+        default:
+            return state;
     }
-    return state;
+  
 }
 
 export default welcome;

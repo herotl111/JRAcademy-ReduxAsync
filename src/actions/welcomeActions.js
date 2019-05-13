@@ -37,7 +37,7 @@ export const getWelcomeFail = () => {
 export const getWelcomeAsync = () => {
     return (dispatch) => {
         dispatch(getWelcome());
-        return axios.get('https://jr-posts.herokuapp.com/v1/posts')
+        return axios.get('https://posts-api-test.herokuapp.com/v1/posts')
         .then(response=>{
             dispatch(getWelcomeSuccess(response.data));
         }, error => {
