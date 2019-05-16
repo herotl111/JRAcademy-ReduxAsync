@@ -1,4 +1,4 @@
-import { ADD_WELCOME, GET_WELCOME_SUCCESS } from "../actions/welcomeActions";
+import { GET_WELCOME_SUCCESS } from "../actions/welcomeActions";
 
 const defaultState = [
     // {id:1, author: 'Nick', content:'I am a teacher' },
@@ -8,12 +8,13 @@ const defaultState = [
 
 const welcome = (state=defaultState, action) => {
     switch(action.type) {
-        case ADD_WELCOME:
-            return state.concat({author: action.payload.author, content: action.payload.content});
+        // case ADD_WELCOME:
+        //     return state.concat({author: action.payload.author, content: action.payload.content});
         case GET_WELCOME_SUCCESS:
             return action.payload.welcomeList;
+        default:
+            return state;
     }
-    return state;
 }
 
 export default welcome;

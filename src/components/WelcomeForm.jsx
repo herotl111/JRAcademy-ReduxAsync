@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {addWelcome} from '../actions/welcomeActions';
+import {addWelcomeAsync} from '../actions/welcomeActions';
 
 class WelcomeForm extends Component{
     constructor(props) {
@@ -12,8 +12,8 @@ class WelcomeForm extends Component{
 
     onWelcomeFormSubmit = (e) => {
         e.preventDefault();
-        this.props.dispatch(addWelcome(this.state.author, this.state.content));
-    }
+        this.props.dispatch(addWelcomeAsync(this.state.author, this.state.content));
+    } // change addWelcome into addWelcomeAsync
 
     onAuthorChange = (e) => {
         this.setState({author:e.target.value});
